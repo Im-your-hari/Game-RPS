@@ -7,6 +7,7 @@ var result_p = document.getElementById("result_p");
 var rock_div = document.getElementById("Rock");
 var paper_div = document.getElementById("Paper");
 var scissor_div = document.getElementById("Scissor");
+var count = 0
 
 function getComputerChoice(_computerChoice) {
     const choice =["Rock","Paper","Scissor"];
@@ -55,16 +56,41 @@ function draw(_userChoice, _computerChoice)
     computerScore_span.innerHTML = computerScore;
     result_p.innerHTML = "It is a draw!"
 }
+
+function gameOver(){
+    winner = (userScore > computerScore ? "User Wins" : "Computer Wins")
+    result_p.innerHTML = "Game Over! <br> "+winner //`${_userChoice} beats ${_computerChoice}.You Win!!!`
+}
+
 function main() {
+    var count = 0
+    
     rock_div.addEventListener('click',function () {
-        game("Rock");
+        count++;
+        console.log(count)
+        if (count <10)
+            game("Rock");
+        else
+            gameOver();
     })
     paper_div.addEventListener('click',function () {
-        game("Paper");
+        count++;
+        console.log(count)
+        if (count <10)
+            game("Paper");
+        else
+        gameOver();
     })
     scissor_div.addEventListener('click',function () {
-        game("Scissor");
+        count++;
+        console.log(count)
+        if (count <10)
+            game("Scissor");
+        else
+            gameOver();
     })
+    
+    
 }
 
 main();
